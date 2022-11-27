@@ -1,0 +1,38 @@
+<mat-toolbar color="primary">
+  <span>Contactos</span>
+  <span class="example-spacer"></span>
+  <button mat-icon-button (click)="openModalForm()">
+    <mat-icon>person_add</mat-icon>
+  </button>
+</mat-toolbar>
+
+<mat-list>
+  <ng-container *ngFor="let item of contacts; let i = index">
+    <mat-list-item>
+      <mat-icon matListItemIcon>person</mat-icon>
+      <div matListItemTitle>{{ item?.name | titlecase }}</div>
+      <div matListItemLine>{{ item?.phone }}</div>
+
+      <ng-container matListItemMeta>
+        <button
+          mat-icon-button
+          type="button"
+          color="primary"
+          (click)="openModalForm(item)"
+        >
+          <mat-icon>edit</mat-icon>
+        </button>
+
+        <button
+          mat-icon-button
+          type="button"
+          color="warn"
+          (click)="openModalConfirm(item)"
+        >
+          <mat-icon>delete</mat-icon>
+        </button>
+      </ng-container>
+    </mat-list-item>
+    <mat-divider></mat-divider>
+  </ng-container>
+</mat-list>
